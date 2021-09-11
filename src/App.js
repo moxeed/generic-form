@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { NumberInput } from "./Form/Inputs/NumberInput";
+import { Form } from "./Form/Form";
+import { Min } from "./Form/Validations/Min";
+import { useState } from "react";
+
+const form = [
+  <NumberInput label="label1" name="label2" validations={[new Min(3)]} />,
+];
 
 function App() {
+  const [formData, setFormData] = useState({});
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form definition={form} state={formData} setState={setFormData} />
     </div>
   );
 }
